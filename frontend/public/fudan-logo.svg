@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 400 400" width="400" height="400">
+  <!-- Fudan University emblem -->
+  <circle cx="200" cy="200" r="192" fill="none" stroke="#1a3c87" stroke-width="12"/>
+  <circle cx="200" cy="200" r="168" fill="none" stroke="#1a3c87" stroke-width="4"/>
+  <circle cx="200" cy="200" r="128" fill="none" stroke="#1a3c87" stroke-width="5"/>
+
+  <!-- Top arc: FUDAN UNIVERSITY -->
+  <path id="ta" d="M 48,230 A 165,165 0 0,1 352,230" fill="none"/>
+  <text font-family="serif" font-size="28" font-weight="700" fill="#1a3c87" letter-spacing="4">
+    <textPath xlink:href="#ta" startOffset="50%" text-anchor="middle">FUDAN UNIVERSITY</textPath>
+  </text>
+
+  <!-- Bottom arc: 1905 -->
+  <path id="ba" d="M 90,240 A 130,130 0 0,0 310,240" fill="none"/>
+  <text font-family="serif" font-size="34" font-weight="700" fill="#1a3c87" letter-spacing="10">
+    <textPath xlink:href="#ba" startOffset="50%" text-anchor="middle">1905</textPath>
+  </text>
+
+  <!-- 旦 character - simplified seal script -->
+  <!-- 日 (sun) rectangle -->
+  <rect x="152" y="100" width="96" height="88" rx="5" fill="none" stroke="#1a3c87" stroke-width="9"/>
+  <!-- 日 middle bar -->
+  <line x1="156" y1="144" x2="244" y2="144" stroke="#1a3c87" stroke-width="7"/>
+  <!-- 一 (ground line below 日) -->
+  <line x1="125" y1="210" x2="275" y2="210" stroke="#1a3c87" stroke-width="9" stroke-linecap="round"/>
+</svg>
