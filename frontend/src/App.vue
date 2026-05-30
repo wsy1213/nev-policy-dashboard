@@ -51,7 +51,6 @@ const allIndustry = ref([])
 const allIntl = ref([])
 const allMedia = ref([])
 const briefData = ref(null)
-const weeklyReport = ref(null)
 const loading = ref(true)
 
 // 当前选中的周（用周一日期作为 key）
@@ -155,11 +154,6 @@ async function loadData() {
       const briefRes = await fetch('./data/brief.json')
       briefData.value = await briefRes.json()
     } catch { briefData.value = null }
-    // 加载完整周报
-    try {
-      const reportRes = await fetch('./data/weekly_report.json')
-      weeklyReport.value = await reportRes.json()
-    } catch { weeklyReport.value = null }
   } catch (e) {
     console.error('加载数据失败:', e)
   }
@@ -362,10 +356,15 @@ onMounted(() => {
     </div>
 
 
-    <!-- ═══ 完整周报 ═══ -->
-    <section class="weekly-report" v-if="!loading && weeklyReport">
-      <div class="weekly-report__inner">
-        <div class="weekly-report__body" v-html="weeklyReport.html_content"></div>
+    <!-- ═══ 周报总结 ═══ -->
+    <section class="brief" v-if="!loading && briefData && briefData.content">
+      <div class="brief__inner">
+        <div class="brief__body">
+          <div v-for="(block, idx) in parseBrief(briefData.content)" :key="idx" class="brief__block">
+            <h3 class="brief__block-title">{{ block.title }}</h3>
+            <p class="brief__block-text">{{ block.text }}</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -806,41 +805,6 @@ onMounted(() => {
 .brief__block:last-child .brief__block-text {
   color: #2d4a7c;
   font-weight: 500;
-}
-
-/* ═══════════ 完整周报 ═══════════ */
-.weekly-report {
-  background: var(--bg);
-  border-bottom: 1px solid var(--border);
-}
-.weekly-report__inner {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 40px 24px 48px;
-}
-.weekly-report__body {
-  font-size: 15px;
-  line-height: 1.9;
-  color: var(--text);
-  max-width: 800px;
-}
-.weekly-report__body :deep(h4) {
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--text);
-  margin: 32px 0 12px;
-}
-.weekly-report__body :deep(p) {
-  margin: 0 0 14px;
-}
-.weekly-report__body :deep(p.note) {
-  font-size: 12px;
-  color: var(--text-tertiary);
-  font-style: italic;
-  margin-top: 32px;
-}
-.weekly-report__body :deep(strong) {
-  font-weight: 600;
 }
 
 /* ═══════════ 内容区 ═══════════ */
