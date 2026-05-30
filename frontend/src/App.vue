@@ -362,7 +362,7 @@ onMounted(() => {
         <div class="brief__body">
           <div v-for="(block, idx) in parseBrief(briefData.content)" :key="idx" class="brief__block">
             <h3 class="brief__block-title">{{ block.title }}</h3>
-            <p class="brief__block-text">{{ block.text }}</p>
+            {{ block.text }}
           </div>
         </div>
       </div>
@@ -745,66 +745,30 @@ onMounted(() => {
   font-size: 15px;
 }
 
-/* ═══════════ 周报总结 ═══════════ */
+/* ═══════════ 周报总结 ═══════ */
 .brief {
   background: var(--bg);
   border-bottom: 1px solid var(--border);
 }
 .brief__inner {
-  max-width: var(--max-width);
+  max-width: 800px;
   margin: 0 auto;
-  padding: 28px 24px 32px;
-}
-.brief__head {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 20px;
-}
-.brief__icon { font-size: 18px; }
-.brief__title {
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--text);
-  letter-spacing: 0.5px;
+  padding: 32px 24px 36px;
 }
 .brief__body {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 16px;
+  font-size: 15px;
+  line-height: 1.9;
+  color: var(--text);
 }
 .brief__block {
-  background: var(--bg-secondary);
-  border-radius: 10px;
-  padding: 16px 18px;
-  border: 1px solid var(--border);
-  transition: box-shadow 0.15s;
-}
-.brief__block:hover {
-  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-}
-.brief__block:last-child {
-  grid-column: 1 / -1;
-  background: linear-gradient(135deg, #f0f4ff 0%, #e8f0fe 100%);
-  border-color: #c3d7f7;
+  margin-bottom: 18px;
 }
 .brief__block-title {
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 700;
   color: var(--accent);
-  margin-bottom: 8px;
-}
-.brief__block:last-child .brief__block-title {
-  color: #1a4cb0;
-}
-.brief__block-text {
-  font-size: 13px;
-  line-height: 1.75;
-  color: var(--text-secondary);
-}
-.brief__block:last-child .brief__block-text {
-  color: #2d4a7c;
-  font-weight: 500;
+  margin: 0 4px 0 0;
+  display: inline;
 }
 
 /* ═══════════ 内容区 ═══════════ */
