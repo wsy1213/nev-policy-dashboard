@@ -859,40 +859,40 @@ onMounted(() => {
   margin-left: auto;
 }
 .weekly-report__body {
-  font-size: 14px;
-  line-height: 1.85;
-  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.9;
+  color: var(--text);
+  max-width: 800px;
 }
 .weekly-report__body :deep(h2) {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 700;
   color: var(--text);
-  margin: 32px 0 16px;
-  padding-left: 12px;
-  border-left: 3px solid var(--accent);
+  margin: 36px 0 20px;
+  text-align: center;
 }
 .weekly-report__body :deep(h3) {
-  font-size: 15px;
-  font-weight: 600;
+  font-size: 17px;
+  font-weight: 700;
   color: var(--text);
-  margin: 24px 0 10px;
+  margin: 32px 0 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
 }
 .weekly-report__body :deep(h4) {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--text);
-  margin: 20px 0 8px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 28px 0 8px;
 }
 .weekly-report__body :deep(p) {
-  margin: 8px 0;
-  text-indent: 2em;
+  margin: 0 0 16px;
 }
 .weekly-report__body :deep(p.note) {
   font-size: 12px;
   color: var(--text-tertiary);
   font-style: italic;
-  text-indent: 0;
-  margin-top: 24px;
+  margin-top: 32px;
 }
 .weekly-report__body :deep(strong) {
   color: var(--text);
