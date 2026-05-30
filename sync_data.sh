@@ -47,7 +47,7 @@ fi
 cd "$PUBLIC_DATA"
 files=()
 for f in *.json; do
-    if [ "$f" != "manifest.json" ] && [ "$f" != "demo.json" ]; then
+    if [ "$f" != "manifest.json" ] && [ "$f" != "demo.json" ] && [ "$f" != "brief.json" ] && [ "$f" != "weekly_report.json" ]; then
         files+=("\"$f\"")
     fi
 done

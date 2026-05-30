@@ -48,7 +48,7 @@ jobs:
             echo '{"files":[' > manifest.json
             first=true
             for f in *.json; do
-              if [ "$f" != "manifest.json" ]; then
+              if [ "$f" != "manifest.json" ] && [ "$f" != "brief.json" ] && [ "$f" != "weekly_report.json" ]; then
                 if [ "$first" = true ]; then
                   first=false
                 else
