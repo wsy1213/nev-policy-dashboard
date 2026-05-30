@@ -359,6 +359,7 @@ onMounted(() => {
     <!-- ═══ 周报总结 ═══ -->
     <section class="brief" v-if="!loading && briefData && briefData.content">
       <div class="brief__inner">
+        <h2 class="brief__heading">周报</h2>
         <div class="brief__body">
           <div v-for="(block, idx) in parseBrief(briefData.content)" :key="idx" class="brief__block">
             <h3 class="brief__block-title">{{ block.title }}</h3>
@@ -754,6 +755,15 @@ onMounted(() => {
   max-width: 800px;
   margin: 0 auto;
   padding: 32px 24px 36px;
+}
+.brief__heading {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: 0.06em;
+  margin: 0 0 20px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--accent);
 }
 .brief__body {
   font-size: 15px;
