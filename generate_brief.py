@@ -11,7 +11,7 @@ BASE = os.path.dirname(os.path.abspath(__file__))
 
 def load_all(month=None):
     """加载所有数据，可选按月份过滤"""
-    pattern = f'{month}-*.json' if month else '2026-*.json'
+    pattern = f'{month}*.json' if month else '2026-*.json'
 
     policies, industry, intl, media = [], [], [], []
     for f in sorted(glob.glob(os.path.join(BASE, 'data', pattern))):

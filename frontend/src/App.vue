@@ -51,6 +51,7 @@ const allIndustry = ref([])
 const allIntl = ref([])
 const allMedia = ref([])
 const briefData = ref(null)
+const weeklyReport = ref(null)
 const loading = ref(true)
 
 // 当前选中的周（用周一日期作为 key）
@@ -154,6 +155,11 @@ async function loadData() {
       const briefRes = await fetch('./data/brief.json')
       briefData.value = await briefRes.json()
     } catch { briefData.value = null }
+    // 加载完整周报
+    try {
+      const reportRes = await fetch('./data/weekly_report.json')
+      weeklyReport.value = await reportRes.json()
+    } catch { weeklyReport.value = null }
   } catch (e) {
     console.error('加载数据失败:', e)
   }
@@ -368,6 +374,18 @@ onMounted(() => {
             <p class="brief__block-text">{{ block.text }}</p>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- ═══ 完整周报 ═══ -->
+    <section class="weekly-report" v-if="!loading && weeklyReport">
+      <div class="weekly-report__inner">
+        <div class="weekly-report__head">
+          <span class="weekly-report__icon"></span>
+          <h2 class="weekly-report__title">{{ weeklyReport.title }}</h2>
+          <span class="weekly-report__date">{{ weeklyReport.date_range }}</span>
+        </div>
+        <div class="weekly-report__body" v-html="weeklyReport.html_content"></div>
       </div>
     </section>
 
@@ -808,6 +826,91 @@ onMounted(() => {
 .brief__block:last-child .brief__block-text {
   color: #2d4a7c;
   font-weight: 500;
+}
+
+/* ═══════════ 完整周报 ═══════════ */
+.weekly-report {
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+.weekly-report__inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 32px 24px 40px;
+}
+.weekly-report__head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--accent);
+}
+.weekly-report__icon { font-size: 20px; }
+.weekly-report__title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 0.04em;
+}
+.weekly-report__date {
+  font-size: 13px;
+  color: var(--text-tertiary);
+  margin-left: auto;
+}
+.weekly-report__body {
+  font-size: 14px;
+  line-height: 1.85;
+  color: var(--text-secondary);
+}
+.weekly-report__body :deep(h2) {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 32px 0 16px;
+  padding-left: 12px;
+  border-left: 3px solid var(--accent);
+}
+.weekly-report__body :deep(h3) {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 24px 0 10px;
+}
+.weekly-report__body :deep(h4) {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 20px 0 8px;
+}
+.weekly-report__body :deep(p) {
+  margin: 8px 0;
+  text-indent: 2em;
+}
+.weekly-report__body :deep(p.note) {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  font-style: italic;
+  text-indent: 0;
+  margin-top: 24px;
+}
+.weekly-report__body :deep(strong) {
+  color: var(--text);
+  font-weight: 600;
+}
+.weekly-report__body :deep(hr) {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 24px 0;
+}
+.weekly-report__body :deep(ul) {
+  padding-left: 1.5em;
+  margin: 8px 0;
+}
+.weekly-report__body :deep(li) {
+  margin: 4px 0;
+  font-size: 13px;
+  color: var(--text-tertiary);
 }
 
 /* ═══════════ 内容区 ═══════════ */
