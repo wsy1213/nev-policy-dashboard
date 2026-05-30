@@ -361,30 +361,10 @@ onMounted(() => {
       <p>加载数据中...</p>
     </div>
 
-    <!-- ═══ 周报总结 ═══ -->
-    <section class="brief" v-if="!loading && briefData && briefData.content">
-      <div class="brief__inner">
-        <div class="brief__head">
-          <span class="brief__icon">📋</span>
-          <h2 class="brief__title">本周总结</h2>
-        </div>
-        <div class="brief__body">
-          <div v-for="(block, idx) in parseBrief(briefData.content)" :key="idx" class="brief__block">
-            <h3 class="brief__block-title">{{ block.title }}</h3>
-            <p class="brief__block-text">{{ block.text }}</p>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <!-- ═══ 完整周报 ═══ -->
     <section class="weekly-report" v-if="!loading && weeklyReport">
       <div class="weekly-report__inner">
-        <div class="weekly-report__head">
-          <span class="weekly-report__icon"></span>
-          <h2 class="weekly-report__title">{{ weeklyReport.title }}</h2>
-          <span class="weekly-report__date">{{ weeklyReport.date_range }}</span>
-        </div>
         <div class="weekly-report__body" v-html="weeklyReport.html_content"></div>
       </div>
     </section>
@@ -836,27 +816,7 @@ onMounted(() => {
 .weekly-report__inner {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 32px 24px 40px;
-}
-.weekly-report__head {
-  display: flex;
-  align-items: baseline;
-  gap: 12px;
-  margin-bottom: 24px;
-  padding-bottom: 16px;
-  border-bottom: 2px solid var(--accent);
-}
-.weekly-report__icon { font-size: 20px; }
-.weekly-report__title {
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--text);
-  letter-spacing: 0.04em;
-}
-.weekly-report__date {
-  font-size: 13px;
-  color: var(--text-tertiary);
-  margin-left: auto;
+  padding: 40px 24px 48px;
 }
 .weekly-report__body {
   font-size: 15px;
@@ -864,29 +824,14 @@ onMounted(() => {
   color: var(--text);
   max-width: 800px;
 }
-.weekly-report__body :deep(h2) {
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--text);
-  margin: 36px 0 20px;
-  text-align: center;
-}
-.weekly-report__body :deep(h3) {
-  font-size: 17px;
-  font-weight: 700;
-  color: var(--text);
-  margin: 32px 0 14px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid var(--border);
-}
 .weekly-report__body :deep(h4) {
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 700;
-  color: var(--accent);
-  margin: 28px 0 8px;
+  color: var(--text);
+  margin: 32px 0 12px;
 }
 .weekly-report__body :deep(p) {
-  margin: 0 0 16px;
+  margin: 0 0 14px;
 }
 .weekly-report__body :deep(p.note) {
   font-size: 12px;
@@ -895,22 +840,7 @@ onMounted(() => {
   margin-top: 32px;
 }
 .weekly-report__body :deep(strong) {
-  color: var(--text);
   font-weight: 600;
-}
-.weekly-report__body :deep(hr) {
-  border: none;
-  border-top: 1px solid var(--border);
-  margin: 24px 0;
-}
-.weekly-report__body :deep(ul) {
-  padding-left: 1.5em;
-  margin: 8px 0;
-}
-.weekly-report__body :deep(li) {
-  margin: 4px 0;
-  font-size: 13px;
-  color: var(--text-tertiary);
 }
 
 /* ═══════════ 内容区 ═══════════ */
